@@ -1,0 +1,22 @@
+.App {
+	background-color: darkgray;
+	text-align: center;
+	flex: 1;
+}
+header {
+	background-color: black;
+	color: white;
+}
+
+footer {
+	background-color: black;
+	color: white;
+}
+
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: 'Arial', sans-serif;
+	display: flex;
+	flex-direction: column;
+}
