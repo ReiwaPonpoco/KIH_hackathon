@@ -1,0 +1,14 @@
+.buttons {
+	display: flex;
+	/* フレックスボックスを使用 */
+	flex-direction: column;
+	/* 子要素を縦方向に配置 */
+	justify-content: center;
+	/* 子要素を中央に配置（縦方向） */
+	align-items: center;
+	/* 子要素を中央に配置（横方向） */
+	height: 100%;
+	/* .buttonsの高さを100%に設定して全画面をカバーする */
+	gap: 10px;
+	/* ボタン間のスペース */
+}
