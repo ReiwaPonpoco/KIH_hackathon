@@ -17,24 +17,27 @@ window.onload = () => {
           const latitude = place.geometry.location.lat;
           const longitude = place.geometry.location.lng;
 
+          // テキスト
           const textEl = document.createRange().createContextualFragment(`
             <a-text
               gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
               value="${place.name}"
               look-at="[gps-camera]"
               scale="3 3 3"
-              color="#0289f0"
+              color="#ffffff"
             ></a-text>`);
 
           textEl.addEventListener("loaded", () => {
             window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
           });
 
+          // アイコン画像のアセット
           const iconAssetEl = document.createRange().createContextualFragment(`
             <a-assets>
               <img id="icon-${index}" src="${place.icon}">
             </a-assets>`);
 
+          // ARアイコン
           const iconEl = document.createRange().createContextualFragment(`
             <a-image
               gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
