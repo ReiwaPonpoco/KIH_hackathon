@@ -1,0 +1,10 @@
+.map-img {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 999;
+  width: 140px;
+  height: 140px;
+  filter:drop-shadow(0 2px 4px gray);
+  opacity: 0.9;
+}
