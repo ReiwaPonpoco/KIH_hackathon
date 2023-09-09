@@ -22,8 +22,8 @@ window.onload = () => {
           );
           placeText.setAttribute("value", place.name);
           placeText.setAttribute("look-at", "[gps-camera]");
-          placeText.setAttribute("scale", "15 15 15");
-          placeText.setAttribute("color", "red");
+          placeText.setAttribute("scale", "3 3 3");
+          placeText.setAttribute("color", "black");
 
           placeText.addEventListener("loaded", () => {
             window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
