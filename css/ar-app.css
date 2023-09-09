@@ -5,6 +5,6 @@
   z-index: 999;
   width: 140px;
   height: 140px;
-  filter:drop-shadow(0 2px 4px gray);
+  filter: drop-shadow(0 2px 4px gray);
   opacity: 0.9;
 }
