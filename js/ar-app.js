@@ -11,25 +11,42 @@ window.onload = () => {
         // alert(position.coords.latitude + " : " + position.coords.longitude);
         // alert(JSON.stringify(places)); // データの確認
 
-        places.forEach((place) => {
+        console.log(places);
+
+        places.forEach((place, index) => {
           const latitude = place.geometry.location.lat;
           const longitude = place.geometry.location.lng;
 
-          const placeText = document.createElement("a-text");
-          placeText.setAttribute(
-            "gps-entity-place",
-            `latitude: ${latitude}; longitude: ${longitude};`
-          );
-          placeText.setAttribute("value", place.name);
-          placeText.setAttribute("look-at", "[gps-camera]");
-          placeText.setAttribute("scale", "3 3 3");
-          placeText.setAttribute("color", "black");
+          const textEl = document.createRange().createContextualFragment(`
+            <a-text
+              gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
+              value="${place.name}"
+              look-at="[gps-camera]"
+              scale="3 3 3"
+              color="#0289f0"
+            ></a-text>`);
 
-          placeText.addEventListener("loaded", () => {
+          textEl.addEventListener("loaded", () => {
             window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
           });
 
-          scene.appendChild(placeText);
+          const iconAssetEl = document.createRange().createContextualFragment(`
+            <a-assets>
+              <img id="icon-${index}" src="${place.icon}">
+            </a-assets>`);
+
+          const iconEl = document.createRange().createContextualFragment(`
+            <a-image
+              gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
+              name="${place.name}"
+              look-at="[gps-camera]"
+              scale="1 1 1"
+              src="#icon-${index}"
+            ></a-image>`);
+
+          scene.appendChild(textEl);
+          scene.appendChild(iconAssetEl);
+          scene.appendChild(iconEl);
         });
       } catch (err) {
         console.error("Error:", err);
