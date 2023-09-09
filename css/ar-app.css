@@ -90,10 +90,10 @@
 }
 
 #menu > div:nth-child(1) > :is(.menu-item, .menu-text) {
-  animation-delay: 0.2s;
+  animation-delay: 0.18s;
 }
 #menu > div:nth-child(2) > :is(.menu-item, .menu-text) {
-  animation-delay: 0.1s;
+  animation-delay: 0.09s;
 }
 
 .menu-item > svg {
@@ -105,10 +105,10 @@
   animation: menu-item-svg-anm 0.6s ease-in-out forwards;
 }
 #menu > div:nth-child(1) svg {
-  animation-delay: 0.24s;
+  animation-delay: 0.12s !important;
 }
 #menu > div:nth-child(2) svg {
-  animation-delay: 0.12s;
+  animation-delay: 0.06s !important;
 }
 
 @keyframes menu-item-anm {
@@ -130,7 +130,7 @@
   }
   60% {
     opacity: 1;
-    transform: scale(1.1) rotate(12deg);
+    transform: scale(1.05) rotate(18deg);
   }
   to {
     opacity: 1;
