@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="App">
+        <header>ForeignAR</header>
+        <div class="back">＜BACK</div>
+        <h2>Create your account</h2>
+
+        <form id="signupForm">
+            <label for="username">E-mail:</label>
+            <input type="text" id="username" name="username" autocomplete="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" autocomplete="new-password" required>
+            <input type="submit" value="GO">
+        </form>
+        <div id="errorMessage" class="error-message"></div> <!-- エラーメッセージ要素 -->
+
+        <footer>© 2023 令和ぽんぽこ. All rights reserved.</footer>
+    </div>
+
+    <script type="module">
+        document.cookie = 'cookieName=value; SameSite=None; Secure';
+        // Firebase認証メソッドをemail/password authenticationに変更
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js';
+        import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js';
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt1O_d0v7s8i7mcXcK2F0a2N8hqsOx684",
+            authDomain: "foreignar.firebaseapp.com",
+            projectId: "foreignar",
+            storageBucket: "foreignar.appspot.com",
+            messagingSenderId: "133387199847",
+            appId: "1:133387199847:web:2a19f1247b3308be767bc2",
+            measurementId: "G-GZJ2PP03NB"
+        };
+
+        // Firebaseの初期化
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupForm = document.getElementById('signupForm');
+            const errorMessage = document.getElementById('errorMessage');
+
+            signupForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // フォームのデフォルトの送信を防止
+
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+
+                try {
+                    // ユーザ作成時にFirebase Authへ登録
+                    const userCredential = await createUserWithEmailAndPassword(auth, username, password);
+
+                    // 送信成功時の処理
+                    window.location.href = "signup_success.html"; // リダイレクト先のファイルを指定します
+
+                } catch (error) {
+                    console.error("エラー:", error);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
