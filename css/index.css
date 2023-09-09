@@ -1,0 +1,7 @@
+body {
+	background-color: white;
+	background-image: url('../assets/images/app-background.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
