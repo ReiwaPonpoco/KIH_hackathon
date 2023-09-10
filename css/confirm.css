@@ -57,7 +57,7 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    width: 80%; /* フォームの入力部分を親要素の幅いっぱいに広げる */
+    width: 90%; /* フォームの入力部分を親要素の幅いっぱいに広げる */
     margin-left: auto; /* これにより左側にマージンが自動的に適用されます */
     margin-right: auto; /* これにより右側にマージンが自動的に適用されます */
     padding: 10px; /* 入力部分の中のテキストに少しスペースを入れる */
