@@ -72,6 +72,7 @@ window.onload = () => {
 
   menuBtn.addEventListener("click", () => {
     menu.toggleAttribute("visible");
+    menu.removeAttribute("init");
     menuBtn.toggleAttribute("open");
   });
 };

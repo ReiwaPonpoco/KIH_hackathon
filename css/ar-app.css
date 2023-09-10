@@ -87,7 +87,10 @@
   transform: scale(0);
   animation: menu-item-anm 0.3s ease-in-out forwards;
 }
-#menu:not([visible]) :is(.menu-item, .menu-text) {
+#menu[init]:not([visible]) :is(.menu-item, .menu-text) {
+  transform: scale(0);
+}
+#menu:not([visible]):not([init]) :is(.menu-item, .menu-text) {
   transform: scale(1);
   animation: menu-item-hide-anm 0.16s ease-in-out forwards;
 }
