@@ -1,3 +1,42 @@
+#map {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  bottom: 8px;
+  left: 8px;
+  border-radius: 999px;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+#map[full-size] {
+  width: 100vw;
+  height: 100vh;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  opacity: 1;
+}
+
+#map-close-btn {
+  place-content: center;
+  display: none;
+  z-index: 9999;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  background: white;
+}
+#map[full-size] + #map-close-btn {
+  display: grid;
+}
+.map-close-icon {
+  width: 24px;
+  height: 24px;
+}
+
 .map-img {
   position: absolute;
   bottom: 8px;

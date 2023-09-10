@@ -1,19 +1,47 @@
-window.onload = () => {
+window.onload = async () => {
+  const { Map } = await google.maps.importLibrary("maps");
+  let map;
+
+  // VR
   const scene = document.querySelector("a-scene");
 
   navigator.geolocation.getCurrentPosition(
-    async function (position) {
+    async function (pos) {
+      const posLat = pos.coords.latitude;
+      const posLng = pos.coords.longitude;
+
+      const mapEl = document.querySelector("#map");
+
+      map = new Map(mapEl, {
+        center: {
+          lat: posLat,
+          lng: posLng,
+        },
+        zoom: 15,
+      });
+
+      mapEl.addEventListener("click", () => {
+        mapEl.setAttribute("full-size", "");
+
+        setTimeout(() => {
+          document
+            .querySelector("#map-close-btn")
+            .addEventListener("click", () => {
+              mapEl.removeAttribute("full-size");
+              map.setCenter(new google.maps.LatLng(posLat, posLng));
+              map.setZoom(15);
+            });
+        }, 100);
+      });
+
       try {
-        const functionUrl = `https://us-central1-foreignar.cloudfunctions.net/getPlaces?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
+        const functionUrl = `https://us-central1-foreignar.cloudfunctions.net/getPlaces?latitude=${posLat}&longitude=${posLng}`;
         const response = await fetch(functionUrl);
         const places = await response.json();
 
-        // alert(position.coords.latitude + " : " + position.coords.longitude);
-        // alert(JSON.stringify(places)); // データの確認
-
         console.log(places);
 
-        places.forEach((place, index) => {
+        places.forEach(async (place, index) => {
           const latitude = place.geometry.location.lat;
           const longitude = place.geometry.location.lng;
 
@@ -34,7 +62,7 @@ window.onload = () => {
           // アイコン画像のアセット
           const iconAssetEl = document.createRange().createContextualFragment(`
             <a-assets>
-              <img id="icon-${index}" src="${place.icon}">
+              <img id="icon-${index}" src="${place.icon}" crossorigin="anonymous">
             </a-assets>`);
 
           // ARアイコン
@@ -50,6 +78,45 @@ window.onload = () => {
           scene.appendChild(textEl);
           scene.appendChild(iconAssetEl);
           scene.appendChild(iconEl);
+
+          //   let markerLatLng = {
+          //     lat: place.geometry.location.lat,
+          //     lng: place.geometry.location.lng,
+          //   };
+
+          //   // marker
+          //   let marker = new google.maps.Marker({
+          //     position: markerLatLng,
+          //     map,
+          //     title: place.name,
+          //     label: {
+          //       text: place.name || "?",
+          //       fontSize: "24px",
+          //     },
+          //   });
+
+          //   // info window
+          //   let infoWindow = new google.maps.InfoWindow({
+          //     position: markerLatLng,
+          //     content: `
+          //       <div class="infowin-container">
+          //         ${place.name}
+          //       </div>
+          //     `,
+          // });
+
+          //   marker.addListener("click", () => {
+          //     infoWindow.open(map, marker);
+          //   });
+        });
+
+        new google.maps.Marker({
+          position: {
+            lat: posLat,
+            lng: posLng,
+          },
+          map,
+          title: "You",
         });
       } catch (err) {
         console.error("Error:", err);
