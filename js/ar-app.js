@@ -66,4 +66,13 @@ window.onload = () => {
       timeout: 100000,
     }
   );
+
+  const menuBtn = document.querySelector("#menu-btn");
+  const menu = document.querySelector("#menu");
+
+  menuBtn.addEventListener("click", () => {
+    menu.toggleAttribute("visible");
+    menu.removeAttribute("init");
+    menuBtn.toggleAttribute("open");
+  });
 };

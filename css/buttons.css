@@ -8,7 +8,8 @@
 }
 
 /* 新規登録ボタンのスタイル */
-.buttons a[href="html/signup.html"] button {
+.buttons a[href="html/signup.html"] button,
+.buttons a[href="../navigation.html"] button {
 	background-color: yellow;
 	border: none;	/* ボーダーを消す */
 	color: black;	/* 文字色 */
@@ -18,7 +19,8 @@
 }
 
 /* ログインボタンのスタイル */
-.buttons a[href="html/login.html"] button {
+.buttons a[href="html/login.html"] button,
+.buttons a[href="../favorite.html"] button {
 	background-color: white;
 	border: none;
 	color: black;
@@ -30,4 +32,8 @@
 /* ボタンにホバーしたときの効果 */
 .buttons button:hover {
 	opacity: 0.9;	/* 透明度を下げることで、少し暗くなる */
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop
