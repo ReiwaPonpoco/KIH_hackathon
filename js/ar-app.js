@@ -47,13 +47,18 @@ window.onload = async () => {
 
           // テキスト
           const textEl = document.createRange().createContextualFragment(`
+          <a-entity
+            gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
+          >
             <a-text
-              gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
               value="${place.name}"
               look-at="[gps-camera]"
               scale="3 3 3"
               color="#ffffff"
-            ></a-text>`);
+              position="-0.8 0 0"
+            ></a-text>
+          </a-entity>
+          `);
 
           textEl.addEventListener("loaded", () => {
             window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
@@ -71,9 +76,13 @@ window.onload = async () => {
               gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
               name="${place.name}"
               look-at="[gps-camera]"
-              scale="1 1 1"
+              scale="0.8 0.8 0.8"
               src="#icon-${index}"
             ></a-image>`);
+
+          iconEl.addEventListener("loaded", () => {
+            window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
+          });
 
           scene.appendChild(textEl);
           scene.appendChild(iconAssetEl);
