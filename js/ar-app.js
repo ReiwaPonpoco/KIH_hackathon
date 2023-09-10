@@ -45,17 +45,29 @@ window.onload = async () => {
           const latitude = place.geometry.location.lat;
           const longitude = place.geometry.location.lng;
 
-          // テキスト
-          const textEl = document.createRange().createContextualFragment(`
+          // テキスト、アイコン
+          const entityEl = document.createRange().createContextualFragment(`
+          <a-entity
+            gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
+          >
             <a-text
-              gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
               value="${place.name}"
               look-at="[gps-camera]"
               scale="3 3 3"
               color="#ffffff"
-            ></a-text>`);
+              position="-0.8 0 0"
+            ></a-text>
+            <a-image
+              name="${place.name}"
+              look-at="[gps-camera]"
+              scale="0.8 0.8 0.8"
+              src="#icon-${index}"
+              position="0 0 0"
+            ></a-image>
+          </a-entity>
+          `);
 
-          textEl.addEventListener("loaded", () => {
+          entityEl.addEventListener("loaded", () => {
             window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
           });
 
@@ -65,19 +77,8 @@ window.onload = async () => {
               <img id="icon-${index}" src="${place.icon}" crossorigin="anonymous">
             </a-assets>`);
 
-          // ARアイコン
-          const iconEl = document.createRange().createContextualFragment(`
-            <a-image
-              gps-entity-place="latitude: ${latitude}; longitude: ${longitude};"
-              name="${place.name}"
-              look-at="[gps-camera]"
-              scale="1 1 1"
-              src="#icon-${index}"
-            ></a-image>`);
-
-          scene.appendChild(textEl);
           scene.appendChild(iconAssetEl);
-          scene.appendChild(iconEl);
+          scene.appendChild(entityEl);
 
           //   let markerLatLng = {
           //     lat: place.geometry.location.lat,
