@@ -6,11 +6,12 @@
   left: 8px;
   border-radius: 999px;
   opacity: 0.9;
+  transition: 0.3s;
 }
 #map[full-size] {
   width: 100vw;
   height: 100vh;
-  top: 0;
+  bottom: 0;
   left: 0;
   border-radius: 0;
   opacity: 1;
