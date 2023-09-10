@@ -4,6 +4,7 @@ body {
     background-size: 100% auto; /* 画像の幅をブラウザの幅に合わせ、高さは自動的に調整します。 */
     background-repeat: no-repeat;
     background-position: center top; /* 画像を上部の中央に配置します。 */
+    background-position: center 50px; /* 画像を上部から50px下げた位置の中央に配置します。 */
 }
 
 /* Create your account タイトル */
@@ -12,12 +13,13 @@ h1 {
     top: 20%; /* 画面の上部から20%の位置 */
     width: 100%;
     text-align: center;
-    font-size: 3em;
+    font-size: 2.5em;
+    padding: 10px;
 }
 
 /* このCSSはサインアップフォームを整えるためのものです。 */
 #signupForm {
-    width: 100%;
+    width: 60%;
     max-width: 400px;  /* この値は任意で、フォームの最大幅を示しています。 */
     margin: 0 auto;   /* これによりフォームが中央に配置されます。 */
     display: flex;
@@ -25,7 +27,7 @@ h1 {
     align-items: center; /* ここで子要素（ボタンを含む）を中央に配置します */
 }
 #loginForm {
-    width: 100%;
+    width: 60%;
     max-width: 400px;  /* この値は任意で、フォームの最大幅を示しています。 */
     margin: 0 auto;   /* これによりフォームが中央に配置されます。 */
     display: flex;
