@@ -19,7 +19,7 @@ h1 {
 
 /* このCSSはサインアップフォームを整えるためのものです。 */
 #signupForm {
-    width: 60%;
+    width: 100%;
     max-width: 400px;  /* この値は任意で、フォームの最大幅を示しています。 */
     margin: 0 auto;   /* これによりフォームが中央に配置されます。 */
     display: flex;
@@ -27,7 +27,7 @@ h1 {
     align-items: center; /* ここで子要素（ボタンを含む）を中央に配置します */
 }
 #loginForm {
-    width: 60%;
+    width: 100%;
     max-width: 400px;  /* この値は任意で、フォームの最大幅を示しています。 */
     margin: 0 auto;   /* これによりフォームが中央に配置されます。 */
     display: flex;
@@ -57,7 +57,9 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    width: 100%; /* フォームの入力部分を親要素の幅いっぱいに広げる */
+    width: 80%; /* フォームの入力部分を親要素の幅いっぱいに広げる */
+    margin-left: auto; /* これにより左側にマージンが自動的に適用されます */
+    margin-right: auto; /* これにより右側にマージンが自動的に適用されます */
     padding: 10px; /* 入力部分の中のテキストに少しスペースを入れる */
     box-sizing: border-box; /* paddingを含む全体の幅を固定 */
     border: 2px solid #FF994F; /* 縁の色を#FF994Fに設定 */
