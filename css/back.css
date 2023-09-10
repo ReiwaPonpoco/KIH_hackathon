@@ -3,7 +3,7 @@
 /* Backリンクのスタイル */
 .back {
     position: absolute; /* 絶対位置を指定 */
-    top: 100px;          /* 上から100ピクセルの位置に配置 */
+    top: 80px;          /* 上から100ピクセルの位置に配置 */
     left: 20px;         /* 左から10ピクセルの位置に配置 */
     color: #333;        /* テキストの色を指定 */
     text-decoration: none; /* 下線をなくす */
