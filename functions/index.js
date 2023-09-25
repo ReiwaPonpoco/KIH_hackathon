@@ -12,8 +12,8 @@ admin.initializeApp();
 
 /**
  * 翻訳を行うエンドポイントを設定: POST
- * req: 緯度, 経度
- * res: JSON
+ * req: 言語設定, コンテンツ
+ * res: コンテンツ
  */
 exports.translateContent = functions.https.onRequest((req, res) => {
   // CORSポリシーを適用して、クロスオリジンのリクエストを処理する
@@ -33,7 +33,7 @@ exports.translateContent = functions.https.onRequest((req, res) => {
       const response = await axios.post(url, null, {
         params: {
           key: apiKey,
-          source: "ja",
+          source: "en",
           target: targetLanguage,
           q: text,
         },
@@ -57,8 +57,8 @@ exports.translateContent = functions.https.onRequest((req, res) => {
 
 /**
  * 位置情報からその周辺の地理情報を返すエンドポイントの設定 GET
- * req: 翻訳するコンテンツ, 言語設定
- * res: 翻訳したコンテンツ
+ * req: 緯度経度
+ * res: JSON
  */
 exports.getPlaces = functions.https.onRequest((req, res) => {
   // CORSポリシーを適用して、クロスオリジンのリクエストを処理する
