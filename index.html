@@ -7,12 +7,15 @@
 	<meta name="author" content="令和ぽんぽこ">
 	<meta name="description" content="foreignARのサインインサインアップページ">
 	<title>Welcome to foreignAR</title>
+	<script src="js/set-language.js"></script>
+	<script src="js/translate.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/dropdown.css">
 	<link rel="stylesheet" href="css/index.css">
 </head>
 
-<body>
+<body id="entrypoint">
 	<div class="App">
 		<header>
 			<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,9 +59,23 @@
 			foreignAR
 		</header>
 
-		<div class="buttons">
-			<a href="html/signup.html"><button>Sign up</button></a>
-			<a href="html/login.html"><button>Log in</button></a>
+		<div class="translateContents">
+			<!-- 言語選択のドロップダウンメニュー -->
+			<select id="languageSelector">
+				<option value="ja" class="l1">Japanese</option>
+				<option value="en" selected class="l2">English</option>
+				<option value="es" class="l3">Spanish</option>
+				<option value="zh-CN" class="l4">Chinese (Simplified)</option>
+				<option value="fr" class="l5">French</option>
+			</select>
+			<div class="buttons">
+				<a href="html/signup.html">
+					<button class="b1">Sign up</button>
+				</a>
+				<a href="html/login.html">
+					<button class="b2">Log in</button>
+				</a>
+			</div>
 		</div>
 		
 		<footer>© 2023 令和ぽんぽこ. All rights reserved.</footer>
