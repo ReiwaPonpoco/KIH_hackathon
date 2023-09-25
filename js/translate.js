@@ -1,10 +1,15 @@
 // ページごとの翻訳ロジック
 const pageTranslators = {
 	entrypoint: async function () {
-		const elementsToTranslate = [
-			document.querySelector('.App .buttons a .b1'),
-			document.querySelector('.App .buttons a .b2'),
-		];
+		const signUpButton = document.querySelector('.App .buttons a .b1');
+		const logInButton = document.querySelector('.App .buttons a .b2');
+
+		// ハードコードされたオリジナルの英語テキストを設定
+		signUpButton.textContent = "Sign up";
+		logInButton.textContent = "Log in";
+
+		const elementsToTranslate = [signUpButton, logInButton];
+		await translateElements(elementsToTranslate);
 	},
 	signup: async function () {
 		const elementsToTranslate = [
@@ -63,7 +68,7 @@ async function translateElements(elements) {
 		const originalText = element.textContent;
 		try {
 			const translatedText = await getTranslatedText(originalText, targetLanguage);
-			element.textContent = translatedText;
+			element.innerHTML = translatedText;
 		} catch (error) {
 			console.error("Error translating text:", error);
 		}
@@ -71,6 +76,15 @@ async function translateElements(elements) {
 }
 
 async function getTranslatedText(originalText, targetLanguage) {
+	// キャッシュキーを作成
+	const cacheKey = `${originalText}-${targetLanguage}`;
+
+	// キャッシュから翻訳を取得
+	const cachedTranslation = localStorage.getItem(cacheKey);
+	if (cachedTranslation) {
+		return cachedTranslation;
+	}
+
 	const functionUrl = `https://us-central1-foreignar.cloudfunctions.net/translateContent`;
 	const response = await fetch(functionUrl, {
 		method: 'POST',
@@ -90,6 +104,10 @@ async function getTranslatedText(originalText, targetLanguage) {
 	}
 
 	const data = await response.json();
+
+	// 翻訳をキャッシュに保存
+	localStorage.setItem(cacheKey, data.translatedText);
+
 	return data.translatedText;
 }
 
@@ -97,12 +115,14 @@ async function getTranslatedText(originalText, targetLanguage) {
 function onPageLoaded() {
 	// 現在のページのIDを取得
 	const currentPage = document.body.id;
+	const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
 
-	// 現在のページの翻訳関数を実行
-	if (pageTranslators[currentPage]) {
+	// ローカルストレージの言語設定に基づいて翻訳を実行
+	if (pageTranslators[currentPage] && storedLanguage !== 'en') {
 		pageTranslators[currentPage]();
 	}
 }
+
 
 // DOMContentLoadedイベントを待機して、ページが完全に読み込まれたらonPageLoaded関数を実行
 document.addEventListener('DOMContentLoaded', onPageLoaded);
