@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="令和ぽんぽこ">
-    <meta name="description" content="foreignARのサインインサインアップページ">
+    <meta name="description" content="foreignARのログインページ">
     <title>ログイン</title>
     <script src="../js/translate.js"></script>
+    <script src="../js/login.js" type="module"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/confirm.css">
     <link rel="stylesheet" href="../css/back.css">
 </head>
+
 <body id="login">
     <div class="App">
         <header>
@@ -52,78 +55,28 @@
                     d="M4.17855 8.9232C4.42808 8.46953 4.99813 8.30403 5.45181 8.55355L7.95181 9.92855C8.40548 10.1781 8.57098 10.7481 8.32146 11.2018C8.07194 11.6555 7.50188 11.821 7.04821 11.5715L4.54821 10.1965C4.09453 9.94693 3.92903 9.37688 4.17855 8.9232Z"
                     fill="white" />
             </svg>
-            ForeignAR
+            foreignAR
         </header>
         <a href="../index.html">
-            <div class="back">＜Back</div>
+            <div class="back">＜ Back</div>
         </a>
-        <h2>Log in to your account</h2>
+        <h2>Login to your account</h2>
 
         <form id="loginForm">
             <div class="form">
-                <label for="username">E-mail</label>
-                <input type="text" id="username" name="username" autocomplete="username" required>
+                <label for="loginEmail">E-mail</label>
+                <input type="text" id="loginEmail" name="loginEmail" autocomplete="username" required>
             </div>
             <div class="form">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" autocomplete="current-password" required>
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="loginPassword" autocomplete="current-password" required>
             </div>
-            <button type="submit" value="Login">Login</button>
+            <button type="submit" value="GO">GO</button>
         </form>
-        <div id="errorMessage" class="error-message"></div> <!-- エラーメッセージ要素 -->
+        <div id="loginErrorMessage" class="error-message"></div> <!-- エラーメッセージ要素 -->
 
         <footer>© 2023 令和ぽんぽこ. All rights reserved.</footer>
     </div>
-
-    <script type="module">
-        document.cookie = 'cookieName=value; SameSite=None; Secure';
-        // Firebase認証メソッドをemail/password authenticationに変更
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js';
-        import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js';
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAt1O_d0v7s8i7mcXcK2F0a2N8hqsOx684",
-            authDomain: "foreignar.firebaseapp.com",
-            projectId: "foreignar",
-            storageBucket: "foreignar.appspot.com",
-            messagingSenderId: "133387199847",
-            appId: "1:133387199847:web:2a19f1247b3308be767bc2",
-            measurementId: "G-GZJ2PP03NB"
-        };
-
-        // Firebaseの初期化
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginForm = document.getElementById('loginForm');
-            const errorMessage = document.getElementById('errorMessage');
-
-            loginForm.addEventListener('submit', async (event) => {
-                event.preventDefault(); // フォームのデフォルトの送信を防止
-
-                var username = document.getElementById('username').value;
-                var password = document.getElementById('password').value;
-
-                try {
-                    // ユーザーのログインを試みる
-                    await signInWithEmailAndPassword(auth, username, password);
-                    // ログイン成功時の処理
-                    window.location.href = "login_success.html"; // ログイン成功時に移動する先のファイルを指定します
-                    // ...
-                } catch (error) {
-                    // エラーメッセージをユーザーに表示する
-                    if (error.code === "auth/user-not-found") {
-                        errorMessage.textContent = "指定されたユーザーが存在しません";
-                        // エラーメッセージを表示するなど、適切な処理を行う
-                    } else {
-                        errorMessage.textContent = "指定されたユーザーが存在しません";
-                        // その他のエラーメッセージや処理を行う
-                    }
-                }
-            });
-        });
-    </script>
 </body>
+
 </html>
