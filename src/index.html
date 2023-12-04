@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="令和ぽんぽこ">
+	<meta name="description" content="foreignARのサインインサインアップページ">
+	<title>Welcome to foreignAR</title>
+	<script src="js/set-language.js"></script>
+	<script src="js/translate.js"></script>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="css/dropdown.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body id="entrypoint">
+	<div class="App">
+		<header>
+			<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M5.00001 16.5625C5.51777 16.5625 5.93751 16.9822 5.93751 17.5V20.0707L7.95181 21.1785C8.40548 21.4281 8.57098 21.9981 8.32146 22.4518C8.07194 22.9055 7.50188 23.071 7.04821 22.8215L4.54821 21.4465C4.24863 21.2817 4.06251 20.9669 4.06251 20.625V17.5C4.06251 16.9822 4.48224 16.5625 5.00001 16.5625Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M8.32146 7.5482C8.57098 8.00188 8.40548 8.57193 7.95181 8.82145L5.93751 9.92932V12.5C5.93751 13.0178 5.51777 13.4375 5.00001 13.4375C4.48224 13.4375 4.06251 13.0178 4.06251 12.5V9.375C4.06251 9.0331 4.24863 8.71831 4.54821 8.55355L7.04821 7.17855C7.50188 6.92903 8.07194 7.09453 8.32146 7.5482Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M14.5482 2.92855C14.8295 2.77382 15.1705 2.77382 15.4518 2.92855L17.9518 4.30355C18.4055 4.55307 18.571 5.12312 18.3215 5.5768C18.0719 6.03047 17.5019 6.19597 17.0482 5.94645L15 4.81994L12.9518 5.94645C12.4981 6.19597 11.9281 6.03047 11.6786 5.5768C11.429 5.12312 11.5945 4.55307 12.0482 4.30355L14.5482 2.92855Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M21.6786 7.5482C21.9281 7.09453 22.4981 6.92903 22.9518 7.17855L25.4518 8.55355C25.7514 8.71831 25.9375 9.0331 25.9375 9.375V12.5C25.9375 13.0178 25.5178 13.4375 25 13.4375C24.4822 13.4375 24.0625 13.0178 24.0625 12.5V9.92932L22.0482 8.82145C21.5945 8.57193 21.429 8.00188 21.6786 7.5482Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M25 16.5625C25.5178 16.5625 25.9375 16.9822 25.9375 17.5V20.625C25.9375 20.9643 25.7541 21.2772 25.4581 21.443L22.9581 22.843C22.5063 23.096 21.935 22.9348 21.682 22.4831C21.429 22.0313 21.5902 21.46 22.0419 21.207L24.0625 20.0755V17.5C24.0625 16.9822 24.4822 16.5625 25 16.5625Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M11.6786 24.4232C11.9281 23.9695 12.4981 23.804 12.9518 24.0535L15 25.1801L17.0482 24.0535C17.5019 23.804 18.0719 23.9695 18.3215 24.4232C18.571 24.8769 18.4055 25.4469 17.9518 25.6964L15.4518 27.0715C15.1705 27.2262 14.8295 27.2262 14.5482 27.0715L12.0482 25.6964C11.5945 25.4469 11.429 24.8769 11.6786 24.4232Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M18.3215 13.1732C18.571 13.6269 18.4055 14.1969 17.9518 14.4465L15.4518 15.8215C14.9981 16.071 14.4281 15.9055 14.1786 15.4518C13.929 14.9981 14.0945 14.4281 14.5482 14.1785L17.0482 12.8035C17.5019 12.554 18.0719 12.7195 18.3215 13.1732Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M25.8215 8.9232C26.071 9.37688 25.9055 9.94693 25.4518 10.1965L22.9518 11.5715C22.4981 11.821 21.9281 11.6555 21.6786 11.2018C21.429 10.7481 21.5945 10.1781 22.0482 9.92855L24.5482 8.55355C25.0019 8.30403 25.5719 8.46953 25.8215 8.9232Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M15 14.0625C15.5178 14.0625 15.9375 14.4822 15.9375 15V18.125C15.9375 18.6428 15.5178 19.0625 15 19.0625C14.4822 19.0625 14.0625 18.6428 14.0625 18.125V15C14.0625 14.4822 14.4822 14.0625 15 14.0625Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M15 22.1875C15.5178 22.1875 15.9375 22.6072 15.9375 23.125V26.25C15.9375 26.7678 15.5178 27.1875 15 27.1875C14.4822 27.1875 14.0625 26.7678 14.0625 26.25V23.125C14.0625 22.6072 14.4822 22.1875 15 22.1875Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M11.682 13.1419C11.935 12.6902 12.5063 12.529 12.9581 12.782L15.4581 14.182C15.9098 14.435 16.071 15.0063 15.818 15.4581C15.565 15.9098 14.9937 16.071 14.5419 15.818L12.0419 14.418C11.5902 14.165 11.429 13.5937 11.682 13.1419Z"
+					fill="white" />
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M4.17855 8.9232C4.42808 8.46953 4.99813 8.30403 5.45181 8.55355L7.95181 9.92855C8.40548 10.1781 8.57098 10.7481 8.32146 11.2018C8.07194 11.6555 7.50188 11.821 7.04821 11.5715L4.54821 10.1965C4.09453 9.94693 3.92903 9.37688 4.17855 8.9232Z"
+					fill="white" />
+			</svg>
+			foreignAR
+		</header>
+
+		<div class="translateContents">
+			<!-- 言語選択のドロップダウンメニュー -->
+			<select id="languageSelector">
+				<option value="ja" class="l1">Japanese</option>
+				<option value="en" selected class="l2">English</option>
+				<option value="es" class="l3">Spanish</option>
+				<option value="zh-CN" class="l4">Chinese (Simplified)</option>
+				<option value="fr" class="l5">French</option>
+			</select>
+			<div class="buttons">
+				<a href="html/signup.html">
+					<button class="b1">Sign up</button>
+				</a>
+				<a href="html/login.html">
+					<button class="b2">Log in</button>
+				</a>
+			</div>
+		</div>
+		
+		<footer>© 2023 令和ぽんぽこ. All rights reserved.</footer>
+	</div>
+</body>
+
+</html>

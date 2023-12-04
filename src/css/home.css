@@ -1,0 +1,9 @@
+
+    body {
+        /*背景のスタイル*/
+        background-color: white;
+        background-image: url('/assets/images/home-background.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
