@@ -5,24 +5,24 @@ import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com
 
 document.addEventListener('DOMContentLoaded', () => {
 	// firebaseの初期化を行う
-const auth = firebaseSetup();
-function firebaseSetup() {
-	// Your web app's Firebase configuration
-	const firebaseConfig = {
-		apiKey: "AIzaSyAt1O_d0v7s8i7mcXcK2F0a2N8hqsOx684",
-		authDomain: "foreignar.firebaseapp.com",
-		projectId: "foreignar",
-		storageBucket: "foreignar.appspot.com",
-		messagingSenderId: "133387199847",
-		appId: "1:133387199847:web:2a19f1247b3308be767bc2",
-		measurementId: "G-GZJ2PP03NB"
-	};
+	const auth = firebaseSetup();
+	function firebaseSetup() {
+		// Your web app's Firebase configuration
+		const firebaseConfig = {
+			apiKey: "AIzaSyAt1O_d0v7s8i7mcXcK2F0a2N8hqsOx684",
+			authDomain: "foreignar.firebaseapp.com",
+			projectId: "foreignar",
+			storageBucket: "foreignar.appspot.com",
+			messagingSenderId: "133387199847",
+			appId: "1:133387199847:web:2a19f1247b3308be767bc2",
+			measurementId: "G-GZJ2PP03NB"
+		};
 
-	// Firebaseの初期化
-	const app = initializeApp(firebaseConfig);
-	const auth = getAuth(app);
-	return auth;
-}
+		// Firebaseの初期化
+		const app = initializeApp(firebaseConfig);
+		const auth = getAuth(app);
+		return auth;
+	}
 	
 	const signupForm = document.getElementById('signupForm');
 	const errorMessage = document.getElementById('errorMessage');
