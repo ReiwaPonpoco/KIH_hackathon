@@ -14,5 +14,4 @@ import './js/translate.js';
 import './js/gmap.js';
 import './js/ar-app.js';
 import './js/signup.js';
-import './js/main.js';
 import './js/login.js';
