@@ -69,3 +69,5 @@ class AuthErrorHandler extends BaseErrorHandler {
 		}
 	}
 }
+
+export { AuthErrorHandler };

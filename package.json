@@ -1,0 +1,16 @@
+{
+  "name": "kih_hackathon",
+  "version": "1.0.0",
+  "description": "令和ぽんぽこによるWebARアプリケーションの開発リポジトリです。令和ぽんぽこは、Web技術を中心とした開発チームです。",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

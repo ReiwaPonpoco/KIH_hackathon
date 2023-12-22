@@ -1,6 +1,6 @@
 import { auth, signInWithEmailAndPassword } from '../firebaseConfig.js';
-import submitValidation from './Validation/authValidation.js';
-import AuthErrorHandler from './errorHandler/authErrorHandler.js';
+import { AuthValidation } from './Validation/authValidation.js';
+import { AuthErrorHandler } from './errorHandler/authErrorHandler.js';
 
 document.cookie = 'cookieName=value; SameSite=None; Secure';
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function login() {
 	const loginForm = getLoginForm();
-	const loginErrorMessage = getLoginErrorMessage();
+	const errorMessage = getLoginErrorMessage();
 	const errorHandler = new AuthErrorHandler();
 
 	loginForm.addEventListener('submit', async (event) => {
@@ -17,7 +17,8 @@ function login() {
 		const username = getUsername();
 		const password = getPassword();
 
-		if (!submitValidation(username, password)) {
+		const validator = new AuthValidation(username, password, errorMessage);
+		if (!validator.validate()) {
 			return;
 		}
 

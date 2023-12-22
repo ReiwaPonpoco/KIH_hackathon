@@ -79,36 +79,6 @@ window.onload = async () => {
 
           scene.appendChild(iconAssetEl);
           scene.appendChild(entityEl);
-
-          //   let markerLatLng = {
-          //     lat: place.geometry.location.lat,
-          //     lng: place.geometry.location.lng,
-          //   };
-
-          //   // marker
-          //   let marker = new google.maps.Marker({
-          //     position: markerLatLng,
-          //     map,
-          //     title: place.name,
-          //     label: {
-          //       text: place.name || "?",
-          //       fontSize: "24px",
-          //     },
-          //   });
-
-          //   // info window
-          //   let infoWindow = new google.maps.InfoWindow({
-          //     position: markerLatLng,
-          //     content: `
-          //       <div class="infowin-container">
-          //         ${place.name}
-          //       </div>
-          //     `,
-          // });
-
-          //   marker.addListener("click", () => {
-          //     infoWindow.open(map, marker);
-          //   });
         });
 
         new google.maps.Marker({

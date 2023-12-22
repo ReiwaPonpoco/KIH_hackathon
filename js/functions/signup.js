@@ -1,6 +1,6 @@
 import { auth, createUserWithEmailAndPassword } from '../firebaseConfig.js';
-import './Validation/authValidation.js';
-import './errorHandler/authErrorHandler.js';
+import { AuthValidation } from './Validation/authValidation.js';
+import { AuthErrorHandler } from './errorHandler/authErrorHandler.js';
 
 document.cookie = 'cookieName=value; SameSite=None; Secure';
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,7 +17,8 @@ function signup() {
 		const username = getUsername();
 		const password = getPassword();
 
-		if (!submitValidation(username, password)) {
+		const validator = new AuthValidation(username, password, errorMessage);
+		if (!validator.validate()) {
 			return;
 		}
 
