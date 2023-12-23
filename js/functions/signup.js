@@ -3,9 +3,7 @@ import { AuthValidation } from './Validation/authValidation.js';
 import { AuthErrorHandler } from './errorHandler/authErrorHandler.js';
 
 document.cookie = 'cookieName=value; SameSite=None; Secure';
-document.addEventListener('DOMContentLoaded', () => {
-	signup();
-});
+document.addEventListener('DOMContentLoaded', signup);
 
 function signup() {
 	const signupForm = getSignupForm();
