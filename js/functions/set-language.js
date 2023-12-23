@@ -1,36 +1,65 @@
-document.addEventListener('DOMContentLoaded', function () {
-	setLanguage();
-
-	// 現在のページのIDを取得
-	const currentPage = document.body.id;
-	
-	// 現在のページの翻訳関数を実行
-	if (pageTranslators[currentPage]) {
-		pageTranslators[currentPage]();
-	}
-});
+document.addEventListener('DOMContentLoaded', setLanguage);
 
 function setLanguage() {
-	const languageSelector = document.getElementById('languageSelector');
-	const storedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+	const languageSelector = getLanguageSelector();
+	const storedLanguage = getStoredLanguage() || 'en';
+	initializeLanguageSetting(languageSelector, storedLanguage);
+	// 言語変更イベントリスナーの設定
+	setupLanguageChangeListener(languageSelector);
+	// 現在のページのIDを取得し、翻訳する
+	const currentPageID = getCurrentPageID();
+	translate(currentPageID);
+}
 
+function initializeLanguageSetting(languageSelector, storedLanguage) {
 	// ローカルストレージの言語設定をドロップダウンに反映
 	languageSelector.value = storedLanguage;
+	return;
+}
 
+function setupLanguageChangeListener(languageSelector) {
 	if (languageSelector) {
 		languageSelector.addEventListener('change', async function () {
 			const selectedLanguage = this.value;
-			const previousLanguage = localStorage.getItem('selectedLanguage');
+			const previousLanguage = getStoredLanguage();
 
-			cacheClear();
-			function cacheClear() {
-				// 言語が変更された場合、キャッシュをクリア
-				if (selectedLanguage !== previousLanguage) {
-					localStorage.clear();
-				}
+			if (selectedLanguage !== previousLanguage) {
+				clearCache();
+				localStorage.setItem('selectedLanguage', selectedLanguage);
+
+				// 現在のページのIDを取得
+				const currentPageID = getCurrentPageID();
+
+				// 現在のページの翻訳関数を実行
+				translate(currentPageID);
 			}
-
-			localStorage.setItem('selectedLanguage', selectedLanguage);
 		});
 	}
+	return;
 }
+
+function translate(currentPageID) {
+	// 現在のページの翻訳関数を実行
+	if (pageTranslators[currentPageID]) {
+		pageTranslators[currentPageID]();
+	}
+	return;
+}
+
+
+function clearCache() {
+	localStorage.clear();
+	return;
+}
+
+function getLanguageSelector() {
+	return document.getElementById('languageSelector');
+}
+function getStoredLanguage() {
+	return localStorage.getItem('selectedLanguage');
+}
+
+function getCurrentPageID() {
+	return document.body.id;
+}
+
